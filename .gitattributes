@@ -1,0 +1,19 @@
+# Set default behaviour, in case users don't have core.autocrlf set.
+* text
+
+# Explicitly declare text files we want to always be normalized and converted
+# to native line endings on checkout.
+*.js text
+*.txt text
+*.css text
+*.gitattributes text
+*.gitignore text
+*.html text
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ttf binary
+*.woff binary
