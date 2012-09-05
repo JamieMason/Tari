@@ -3,6 +3,7 @@ require.config({
     ajax: 'src/ajax',
     collection: 'src/collection',
     compare: 'src/compare',
+    each: 'src/each',
     fn: 'src/fn',
     obj: 'src/obj',
     str: 'src/str',

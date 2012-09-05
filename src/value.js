@@ -1,14 +1,12 @@
 define([
     'fn',
-    'collection'
+    'each'
   ],
 
   function(
     $fn,
-    $collection
+    $each
   ) {
-
-    var curry = $fn.curry;
 
     function get(x) {
       return {}.toString.call(x).slice(8, -1);
@@ -18,12 +16,16 @@ define([
       return get(x) === type;
     }
 
-    return $collection.fold(function(memo, val) {
-      memo['is' + val] = curry(is, [val]);
-      return memo;
-    }, {
+    var curry = $fn.curry;
+    var $value = {
       get: get,
       is: curry(is)
-    }, 'Array Boolean Function Null Number Object RegExp String Undefined'.split(' '));
+    };
+
+    $each('Array Boolean Function Null Number Object RegExp String Undefined'.split(' '), function(type, ix){
+      $value['is' + type] = curry(is, [type]);
+    });
+
+    return $value;
   }
 );

@@ -15,7 +15,6 @@ define([
     var hasXhr = $value.isFunction(global.XMLHttpRequest);
     var hasAxo = $value.isFunction(global.ActiveXObject);
     var hasAjax = hasXhr || hasAxo;
-    var newRequest = hasXhr ? newXhr : hasAxo ? newAxo : $fn.noOp;
 
     /**
      * Open a connection for the option's request Object
@@ -45,13 +44,15 @@ define([
       return new ActiveXObject('Microsoft.XMLHTTP');
     }
 
+    var newRequest = hasXhr ? newXhr : hasAxo ? newAxo : $fn.noOp;
+
     /**
      * Throw error if the attempted request parameters are not valid
      * @private
      * @param  {Object} ops
      * @return {Object} ops
      */
-    function validateStrict(ops) {
+    function throwIfInvalid(ops) {
       if (validate(ops)) {
         return ops;
       }
@@ -111,7 +112,7 @@ define([
      * @param  {Function} ops.success
      * @return {XMLHttpRequest|ActiveXObject} req
      */
-    var get = compose([validateStrict, initRequest, handleCaching, openConnection('GET'), function(ops) {
+    var get = compose([throwIfInvalid, initRequest, handleCaching, openConnection('GET'), function(ops) {
       var req = ops.request;
       req.send('');
       return req;
@@ -125,7 +126,7 @@ define([
      * @param  {Function} ops.success
      * @return {XMLHttpRequest|ActiveXObject} req
      */
-    var post = compose([validateStrict, initRequest, openConnection('POST'), function(ops) {
+    var post = compose([throwIfInvalid, initRequest, openConnection('POST'), function(ops) {
       var req = ops.request;
       req.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
       req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
