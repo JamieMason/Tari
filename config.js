@@ -4,6 +4,7 @@ require.config({
     collection: 'src/collection',
     compare: 'src/compare',
     domListener: 'src/dom.listener',
+    domReady: 'src/dom.ready',
     each: 'src/each',
     fn: 'src/fn',
     obj: 'src/obj',

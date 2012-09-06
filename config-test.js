@@ -4,6 +4,7 @@ require.config({
     'collectionTest': 'src-test/collection.test',
     'compareTest': 'src-test/compare.test',
     'domListenerTest': 'src-test/dom.listener.test',
+    'domReadyTest': 'src-test/dom.ready.test',
     'eachTest': 'src-test/each.test',
     'fnTest': 'src-test/fn.test',
     'objTest': 'src-test/obj.test',
