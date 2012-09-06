@@ -8,7 +8,7 @@ define([
 
     describe('domListener', function() {
 
-      describe('#add', function() {
+      describe('#on', function() {
 
         beforeEach(function(){
           $domListener.flush();
@@ -23,22 +23,22 @@ define([
           var count = 0;
 
           function someFn() { count++; }
-          $domListener.add(div, 'click', someFn);
+          $domListener.on('click', someFn, div);
           div.click();
           expect(count).toEqual(1);
         });
 
       });
 
-      describe('#remove', function() {
+      describe('#off', function() {
 
         it('should remove a DOM event listener from an element', function() {
           var div = document.createElement('div');
           var count = 0;
 
           function someFn() { count++; }
-          $domListener.add(div, 'click', someFn);
-          $domListener.remove(div, 'click', someFn);
+          $domListener.on('click', someFn, div);
+          $domListener.off('click', someFn, div);
           div.click();
           expect(count).toEqual(0);
         });
@@ -52,7 +52,7 @@ define([
           var count = 0;
 
           function someFn() { count++; }
-          $domListener.add(div, 'click', someFn);
+          $domListener.on('click', someFn, div);
           $domListener.flush();
           div.click();
           expect(count).toEqual(0);

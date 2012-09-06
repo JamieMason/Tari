@@ -12,6 +12,8 @@ define([
     var win = window;
     var doc = win.document;
     var root = doc.documentElement;
+    var hasAddEventListener = !!root.addEventListener;
+    var hasAttachEvent = !!root.attachEvent;
     var addEvent;
     var removeEvent;
     var cache = [];
@@ -20,12 +22,12 @@ define([
      * Add/Remove listener using W3C methods
      * @private
      * @param  {String} method "addEventListener" or "removeEventListener"
-     * @param  {HTMLElement} el
      * @param  {String} type
      * @param  {Function} f
+     * @param  {HTMLElement} el
      * @return {Boolean}
      */
-    var w3cDom = curry(function(method, el, type, f) {
+    var w3cDom = curry(function(method, type, f, el) {
       return el[method](type, f, false);
     });
 
@@ -33,19 +35,19 @@ define([
      * Add/Remove listener using Microsoft methods
      * @private
      * @param  {String} method "attachEvent" or "detachEvent"
-     * @param  {HTMLElement} el
      * @param  {String} type
      * @param  {Function} f
+     * @param  {HTMLElement} el
      * @return {Boolean}
      */
-    var microsoftDom = curry(function(method, el, type, f) {
+    var microsoftDom = curry(function(method, type, f, el) {
       return el[method]('on' + type, f);
     });
 
-    if (root.addEventListener) {
+    if (hasAddEventListener) {
       addEvent = w3cDom('addEventListener');
       removeEvent = w3cDom('removeEventListener');
-    } else if (root.attachEvent) {
+    } else if (hasAttachEvent) {
       addEvent = microsoftDom('attachEvent');
       removeEvent = microsoftDom('detachEvent');
     } else {
@@ -67,27 +69,37 @@ define([
       });
     }
 
-    addEvent(win, 'unload', flushCache);
+    addEvent('unload', flushCache, win);
 
     return {
       /**
+       * @return {Boolean}
+       */
+      hasAddEventListener: $fn.id(hasAddEventListener),
+
+      /**
+       * @return {Boolean}
+       */
+      hasAttachEvent: $fn.id(hasAttachEvent),
+
+      /**
        * Add listener to DOM Element
-       * @param  {HTMLElement} el
        * @param  {String} type
        * @param  {Function} f
+       * @param  {HTMLElement} el
        */
-      add: function(el, type, f) {
-        addEvent(el, type, f);
-        cache.push([el, type, f]);
-      },
+      on: curry(function(type, f, el) {
+        addEvent(type, f, el);
+        cache.push([type, f, el]);
+      }),
 
       /**
        * Remove listener from DOM Element
-       * @param  {HTMLElement} el
        * @param  {String} type
        * @param  {Function} f
+       * @param  {HTMLElement} el
        */
-      remove: removeEvent,
+      off: curry(removeEvent),
       flush: flushCache
     };
   }
