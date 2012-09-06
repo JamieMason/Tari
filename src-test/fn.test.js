@@ -7,6 +7,35 @@ define([
   ) {
 
     describe('fn', function() {
+
+      describe('#id', function() {
+        it('should return a function that always returns the same value that was used as its argument', function() {
+          var rTrue = $fn.id(true);
+          var r82 = $fn.id(82);
+          var rObj = $fn.id({});
+
+          expect(rTrue()).toEqual(true);
+          expect(r82()).toEqual(82);
+          expect(rObj()).toEqual({});
+        });
+      });
+
+      describe('#bind', function() {
+        it('should return a function that when called, will have always have a "this" of x', function() {
+          var bandName = "Hot Rod Circuit";
+          var scope = {
+            band: bandName
+          };
+
+          var scopeHrc = $fn.bind(function(){
+            return this.band;
+          }, scope);
+
+          expect(scopeHrc()).toEqual(bandName);
+          expect(scopeHrc.call({ band: 'Park' })).toEqual(bandName);
+        });
+      });
+
       describe('#curry', function() {
         var concat3 = $fn.curry(function(a, b, c) {
           return a + b + c;

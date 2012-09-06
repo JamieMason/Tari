@@ -44,7 +44,7 @@ define([
       return new ActiveXObject('Microsoft.XMLHTTP');
     }
 
-    var newRequest = hasXhr ? newXhr : hasAxo ? newAxo : $fn.noOp;
+    var newRequest = hasXhr ? newXhr : hasAxo ? newAxo : $fn.noOp();
 
     /**
      * Throw error if the attempted request parameters are not valid

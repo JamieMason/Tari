@@ -6,6 +6,12 @@ define([
 
   ) {
 
+    function id(x) {
+      return function() {
+        return x;
+      };
+    }
+
     /**
      * Returns a function which, if called with less than it's number of named arguments, returns a partially applied version of itself.
      * Otherwise those pre-applied arguments can be passed with the initial call.
@@ -19,6 +25,18 @@ define([
         var params = args ? args.concat() : [];
         return params.push.apply(params, arguments) < f.length && arguments.length ? curry.call(this, f, params) : f.apply(this, params);
       } : f;
+    }
+
+    /**
+     * Returns a function which when called, will always have a 'this' with a value of 'scope'
+     * @param  {Function} f
+     * @param  {Object} scope
+     * @return {Function}
+     */
+    function bind(f, scope) {
+      return function() {
+        return f.apply(scope, arguments);
+      };
     }
 
     /**
@@ -40,9 +58,11 @@ define([
     }
 
     return {
-      noOp: function() {},
+      bind: bind,
+      compose: compose,
       curry: curry,
-      compose: compose
+      id: id,
+      noOp: id(function() {})
     };
   }
 );
