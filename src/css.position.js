@@ -66,7 +66,7 @@ define([
     scrollPos = $fn.curry(function(direction, el) {
       var html = doc.documentElement || {};
       var body = doc.body || {};
-      return !el || $domQuery.is(el, 'html,body') ? html[direction] || body[direction] || 0 : el[direction] || 0;
+      return !el || $domQuery.is('html,body', el) ? html[direction] || body[direction] || 0 : el[direction] || 0;
     });
 
     return {
