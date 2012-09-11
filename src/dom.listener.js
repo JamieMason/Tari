@@ -61,7 +61,7 @@ define([
 
     /**
      * Remove all event listeners bound by this module
-     * @return {Array} cache
+     * @return {Array[]} cache
      */
     function flushCache () {
       return $each(cache, function(item){
