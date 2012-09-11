@@ -10,6 +10,7 @@ require.config({
     each: 'src/each',
     fn: 'src/fn',
     obj: 'src/obj',
+    sizzle: 'vendor/sizzle-1.8.1',
     str: 'src/str',
     url: 'src/url',
     value: 'src/value'
