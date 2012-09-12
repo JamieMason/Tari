@@ -80,6 +80,39 @@ define([
           expect(inspectArgs(0)).toEqual(false);
         });
       });
+
+      describe('#flip', function() {
+        it('should return a version of f which, when called has its first two arguments flipped', function() {
+          function divide (a, b) {
+            return a / b;
+          }
+
+          var divideFlipped = $fn.flip(divide);
+          expect(divide(2, 1)).toEqual(2);
+          expect(divideFlipped(2, 1)).toEqual(0.5);
+        });
+      });
+
+      describe('#input', function() {
+        it('should return the arguments it was called with as an Array', function() {
+          expect({}.toString.call($fn.input(1,2))).toEqual('[object Array]');
+          expect({}.toString.call($fn.input())).toEqual('[object Array]');
+        });
+      });
+
+      describe('#callWith', function() {
+        it('should call f using xs as the arguments', function() {
+          var add2Values = $fn.callWith(function (a, b) {
+            return a + b;
+          });
+
+
+
+          expect(add2Values([1,2])).toEqual(3);
+          expect(add2Values([5,5])).toEqual(10);
+        });
+      });
+
     });
   }
 );
