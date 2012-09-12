@@ -22,8 +22,8 @@ define([
 
     /**
      * Take a dash separated String and return it in camel case
-     * @param  {String} str e.g. "background-color"
-     * @return {String} e.g. "backgroundColor"
+     * @param  {String} str eg. "background-color"
+     * @return {String} eg. "backgroundColor"
      */
     function toCamelCase(str) {
       return str.replace(/(-[a-z])/g, function(x) {
