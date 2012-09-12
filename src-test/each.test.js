@@ -1,9 +1,9 @@
 define([
-    'collection'
+    'each'
   ],
 
   function(
-    $collection
+    $each
   ) {
 
     describe('each', function() {
@@ -12,7 +12,7 @@ define([
           var alpha = ['A', 'B', 'C'];
           var out = '';
 
-          $collection.each(alpha, function(el, i, list) {
+          $each(alpha, function(el, i, list) {
             expect(el).toBe(alpha[i]);
             expect(list).toBe(alpha);
             out += el;
@@ -25,7 +25,7 @@ define([
           var alpha = { a:'A', b:'B', c:'C' };
           var out = '';
 
-          $collection.each(alpha, function(val, key, list) {
+          $each(alpha, function(val, key, list) {
             expect(val).toBe(alpha[key]);
             expect(list).toBe(alpha);
             out += val;
