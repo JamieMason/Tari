@@ -4,6 +4,7 @@ require.config({
     collection: 'src/collection',
     compare: 'src/compare',
     cssPosition: 'src/css.position',
+    domAttr: 'src/dom.attr',
     domListener: 'src/dom.listener',
     domQuery: 'src/dom.query',
     domReady: 'src/dom.ready',
