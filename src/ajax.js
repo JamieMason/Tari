@@ -12,8 +12,8 @@ define('ajax', [
 
     var global = window;
     var compose = $fn.compose;
-    var hasXhr = $value.isFunction(global.XMLHttpRequest);
-    var hasAxo = $value.isFunction(global.ActiveXObject);
+    var hasXhr = !$value.isUndefined(global.XMLHttpRequest);
+    var hasAxo = !$value.isUndefined(global.ActiveXObject);
     var hasAjax = hasXhr || hasAxo;
 
     /**
@@ -56,7 +56,7 @@ define('ajax', [
       if (validate(ops)) {
         return ops;
       }
-      throw new Error('Supports AJAX:' + hasAjax + ', options:' + ops);
+      throw new Error('Supports AJAX:' + hasAjax);
     }
 
     /**
