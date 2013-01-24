@@ -1,6 +1,21 @@
 (function() {
 
   var testSuites = {
+    ajax: 'src/ajax',
+    collection: 'src/collection',
+    compare: 'src/compare',
+    cssPosition: 'src/css.position',
+    domAttr: 'src/dom.attr',
+    domListener: 'src/dom.listener',
+    domQuery: 'src/dom.query',
+    domReady: 'src/dom.ready',
+    each: 'src/each',
+    fn: 'src/fn',
+    obj: 'src/obj',
+    str: 'src/str',
+    url: 'src/url',
+    value: 'src/value',
+
     ajaxTest: 'src-test/ajax.test',
     collectionTest: 'src-test/collection.test',
     compareTest: 'src-test/compare.test',
