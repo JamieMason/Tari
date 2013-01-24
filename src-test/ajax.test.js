@@ -1,4 +1,4 @@
-define([
+define('ajaxTest', [
     'ajax'
   ],
 
@@ -10,7 +10,7 @@ define([
       describe('#get', function() {
         it('should read remote files', function() {
           $ajax.get({
-            url: 'src-test/lib/remote-file.txt',
+            url: '/base/src-test/lib/remote-file.txt',
             success: function(resBody){
               expect(resBody.indexOf('Remote file')).toEqual(0);
             }
@@ -22,7 +22,7 @@ define([
         it('should post to remote handlers', function() {
           var postData = '{"key":"value"}';
           $ajax.post({
-            url: 'src-test/lib/echo.php',
+            url: '/server',
             postBody: postData,
             success: function(resBody){
               expect(resBody).toEqual(postData);

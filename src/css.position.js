@@ -1,4 +1,4 @@
-define([
+define('cssPosition', [
     'fn',
     'value',
     'domQuery'

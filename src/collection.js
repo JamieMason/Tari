@@ -1,4 +1,4 @@
-define([
+define('collection', [
     'fn',
     'each'
   ],

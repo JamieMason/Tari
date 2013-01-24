@@ -1,4 +1,4 @@
-define([
+define('domListenerTest', [
     'domListener'
   ],
 

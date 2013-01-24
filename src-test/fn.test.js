@@ -1,4 +1,4 @@
-define([
+define('fnTest', [
     'fn'
   ],
 

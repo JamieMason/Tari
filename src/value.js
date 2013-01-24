@@ -1,4 +1,4 @@
-define([
+define('value', [
     'fn',
     'each'
   ],
@@ -8,22 +8,40 @@ define([
     $each
   ) {
 
+    var curry = $fn.curry;
+    var is;
+
     function get(x) {
       return {}.toString.call(x).slice(8, -1);
     }
 
-    function is(type, x) {
+    is = curry(function(type, x) {
       return get(x) === type;
+    });
+
+    function isNumber(x){
+
     }
 
-    var curry = $fn.curry;
+    function and(fs, x) {
+      var i = fs.length;
+
+      while (i--) {
+        if (!fs[i](x)) {
+          return false;
+        }
+      }
+      return true;
+    }
+
     var $value = {
       get: get,
-      is: curry(is)
+      is: is,
+      isNumber: and(is('Number'), isNaN)
     };
 
-    $each('Array Boolean Function Null Number Object RegExp String Undefined'.split(' '), function(type, ix){
-      $value['is' + type] = curry(is, [type]);
+    $each('Arguments Array Boolean Function Null Object RegExp String Undefined'.split(' '), function(type, ix){
+      $value['is' + type] = is(type);
     });
 
     return $value;

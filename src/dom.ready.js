@@ -1,7 +1,4 @@
-/**
- * @fileOverview Adaptation of https://github.com/ded/domready
- */
-define([
+define('domReady', [
     'domListener'
   ],
 

@@ -1,4 +1,4 @@
-define([
+define('domAttrTest', [
     'domAttr'
   ],
 

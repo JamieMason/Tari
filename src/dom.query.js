@@ -1,14 +1,12 @@
-define([
-  'fn',
-  'sizzle'
+define('domQuery', [
+  'fn'
   ],
 
   function(
-    $fn,
-    $sizzle
+    $fn
   ) {
 
-    var doc = window.doc;
+    var doc = document;
     var curry = $fn.curry;
 
     /**
@@ -18,7 +16,7 @@ define([
      * @return {Boolean}
      */
     function is(selector, el) {
-      var xs = $sizzle(selector, el.parentNode || doc);
+      var xs = find(selector, el.parentNode);
       var i = xs.length;
 
       while (i--) {
@@ -36,7 +34,7 @@ define([
      * @return {HTMLElement[]}
      */
     function find(selector, context) {
-      return $sizzle(selector, context);
+      return (context || doc).querySelectorAll(selector);
     }
 
     return {

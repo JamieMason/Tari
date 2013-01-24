@@ -1,4 +1,4 @@
-define([
+define('cssPositionTest', [
     'cssPosition'
   ],
 
@@ -31,7 +31,9 @@ define([
       describe('#offsetLeft', function() {
         it('should state how many pixels from the left edge of the body an element is', function() {
           var wrap = document.createElement('div');
-          wrap.innerHTML = '<div style="margin:0;padding:0;"></div>';
+          wrap.innerHTML = '<div style="margin:5px;padding:0;"></div>';
+          document.body.style.padding = 0;
+          document.body.style.margin = 0;
           document.body.appendChild(wrap);
           var el = wrap.getElementsByTagName('div')[0];
 

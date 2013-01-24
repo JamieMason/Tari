@@ -1,4 +1,4 @@
-define([
+define('urlTest', [
     'url'
   ],
 

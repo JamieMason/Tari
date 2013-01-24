@@ -1,4 +1,4 @@
-define([
+define('domAttr', [
     'fn',
     'each'
   ],
