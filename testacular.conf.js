@@ -8,7 +8,7 @@ files = [
   { pattern: '**/src-test/lib/remote-file.txt', watched: false, included: false, served: true },
   '**/vendor/require-2.0.6.js',
   '**/vendor/jasmine-matchers-1.1.0.js',
-  '**/config-test.js',
+  '**/test-runner.js',
   '**/src/*.js',
   '**/src-test/*.js'
 ];
