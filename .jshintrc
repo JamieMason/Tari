@@ -33,7 +33,8 @@
     "preprocessors",
     "junitReporter",
     "coverageReporter",
-    "proxies"
+    "proxies",
+    "grunt"
   ],
 
   "node": true,
@@ -58,7 +59,7 @@
   "onevar": false,
   "plusplus": false,
   "regexp": false,
-  "strict": false,
+  "strict": true,
   "sub": true,
   "undef": true,
   "white": false
