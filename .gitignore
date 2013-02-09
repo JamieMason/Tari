@@ -1,3 +1,5 @@
 .DS_Store
 
 /.sonar/
+/Tari.sublime-project
+/Tari.sublime-workspace
