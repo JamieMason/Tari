@@ -8,6 +8,8 @@ define('url', [
     $collection
   ) {
 
+    'use strict';
+
     /**
      * Does the URL have GET query params?
      * @param  {String}  url

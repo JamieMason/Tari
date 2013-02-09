@@ -8,6 +8,8 @@ define('obj', [
     $collection
   ) {
 
+    'use strict';
+
     var curry = $fn.curry;
     var fold = $collection.fold;
 

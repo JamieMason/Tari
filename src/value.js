@@ -8,6 +8,8 @@ define('value', [
     $each
   ) {
 
+    'use strict';
+
     var curry = $fn.curry;
     var is;
 

@@ -8,6 +8,8 @@ define('collection', [
     $each
   ) {
 
+    'use strict';
+
     var curry = $fn.curry;
 
     /**
@@ -28,7 +30,7 @@ define('collection', [
      * Iterate over every member of xs, calling f with the arguments: member, i, xs to create a new array of f's return values
      * @param  {Array|Object} xs
      * @param  {Function} f
-     * @return {Array|Object} ys
+     * @return {Array|Object}
      */
     function map(xs, f) {
       return fold(function(memo, val, key) {
@@ -39,7 +41,19 @@ define('collection', [
 
     return {
       fold: curry(fold),
-      map: curry(map)
+      map: curry(map),
+
+      /**
+       * Convert an Array-like Object into a true Array
+       * @param  {Array|Object|NodeList} xs
+       * @return {Array}
+       */
+      toArray: function(xs) {
+        return fold(function(memo, val) {
+          memo.push(val);
+          return memo;
+        }, [], xs);
+      }
     };
   }
 );

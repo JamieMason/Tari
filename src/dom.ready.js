@@ -6,6 +6,8 @@ define('domReady', [
     $domListener
   ) {
 
+    'use strict';
+
     var win = window;
     var fns = [];
     var fn;

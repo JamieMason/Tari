@@ -6,6 +6,8 @@ define('fn', [
 
   ) {
 
+    'use strict';
+
     /**
      * Returns a function which when called, will always return x
      * @param  {Mixed} x

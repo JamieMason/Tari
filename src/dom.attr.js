@@ -8,6 +8,8 @@ define('domAttr', [
     $each
   ) {
 
+    'use strict';
+
     var curry = $fn.curry;
 
     /**

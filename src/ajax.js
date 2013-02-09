@@ -10,6 +10,8 @@ define('ajax', [
     $url
   ) {
 
+    'use strict';
+
     var global = window;
     var compose = $fn.compose;
     var hasXhr = !$value.isUndefined(global.XMLHttpRequest);

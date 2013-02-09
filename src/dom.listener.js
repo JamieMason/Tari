@@ -8,6 +8,8 @@ define('domListener', [
     $each
   ) {
 
+    'use strict';
+
     var curry = $fn.curry;
     var win = window;
     var doc = win.document;

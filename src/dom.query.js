@@ -6,6 +6,8 @@ define('domQuery', [
     $fn
   ) {
 
+    'use strict';
+
     var doc = document;
     var curry = $fn.curry;
 

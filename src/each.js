@@ -6,6 +6,8 @@ define('each', [
     $fn
   ) {
 
+    'use strict';
+
     var iterator = {
       /**
        * Iterate over every member of xs, calling f with the arguments: member, i, xs

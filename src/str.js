@@ -6,6 +6,8 @@ define('str', [
     $fn
   ) {
 
+    'use strict';
+
     return {
       /**
        * Case-insensitive check whether a and b are the same

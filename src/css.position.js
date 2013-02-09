@@ -10,6 +10,8 @@ define('cssPosition', [
     $domQuery
   ) {
 
+    'use strict';
+
     var win = window;
     var doc = win.document;
     var testElement = doc.createElement('div');

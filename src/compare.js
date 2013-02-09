@@ -6,6 +6,8 @@ define('compare', [
     $fn
   ) {
 
+    'use strict';
+
     var curry = $fn.curry;
 
     return {
