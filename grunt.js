@@ -1,6 +1,14 @@
 module.exports = function(grunt) {
 
+  'use strict';
+
   grunt.initConfig({
+
+    shell: {
+      docs: {
+        command: 'jsdoc --recurse --configure jsdoc.json --destination docs src README.md'
+      }
+    },
 
     lint: {
       files: ['src/*.js']
@@ -21,5 +29,7 @@ module.exports = function(grunt) {
 
   });
 
+  grunt.loadNpmTasks('grunt-shell');
+  grunt.registerTask('docs', 'shell:docs');
   grunt.registerTask('default', 'lint');
 };
