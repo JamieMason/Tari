@@ -26,7 +26,7 @@ define('str', [
        * @return {Boolean}
        */
       contains: $fn.curry(function(pattern, string) {
-        return !!~string.search(pattern);
+        return string.search(pattern) !== -1;
       })
     };
   }
