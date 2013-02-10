@@ -48,7 +48,7 @@
   "eqeqeq": true,
   "evil": true,
   "expr": true,
-  "forin": false,
+  "forin": true,
   "immed": true,
   "laxbreak": false,
   "newcap": true,
