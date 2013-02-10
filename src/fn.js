@@ -22,37 +22,37 @@ define('fn', [
     /**
      * Returns a function which, if called with less than it's number of named arguments, returns a partially applied version of itself.
      * Otherwise those pre-applied arguments can be passed with the initial call.
-     * @param  {Function} f
+     * @param  {Function} fn
      * @param  {Array} args
      * @return {Function}
      */
-    function curry(f, args) {
-      return f.length > 1 ?
+    function curry(fn, args) {
+      return fn.length > 1 ?
       function() {
         var params = args ? args.concat() : [];
-        return params.push.apply(params, arguments) < f.length && arguments.length ? curry.call(this, f, params) : f.apply(this, params);
-      } : f;
+        return params.push.apply(params, arguments) < fn.length && arguments.length ? curry.call(this, fn, params) : fn.apply(this, params);
+      } : fn;
     }
 
     /**
      * A composable version of Function.prototype.apply
-     * @param  {Function} f
+     * @param  {Function} fn
      * @param  {Array} args
      * @return {Mixed}
      */
-    function callWith (f, args) {
-      return f.apply(this, args);
+    function callWith (fn, args) {
+      return fn.apply(this, args);
     }
 
     /**
      * Returns a function which when called, will always have a 'this' with a value of 'scope'
-     * @param  {Function} f
+     * @param  {Function} fn
      * @param  {Object} scope
      * @return {Function}
      */
-    function bind(f, scope) {
+    function bind(fn, scope) {
       return function() {
-        return f.apply(scope, arguments);
+        return fn.apply(scope, arguments);
       };
     }
 
@@ -96,12 +96,12 @@ define('fn', [
     }
 
     /**
-     * Returns a version of f which, when called has it's first two arguments flipped
-     * @param  {Function} f
+     * Returns a version of fn which, when called has it's first two arguments flipped
+     * @param  {Function} fn
      * @return {Mixed}
      */
-    function flip(f) {
-      return compose([input, curry(swap, [0, 1]), curry(callWith, [f])]);
+    function flip(fn) {
+      return compose([input, curry(swap, [0, 1]), curry(callWith, [fn])]);
     }
 
     return {
