@@ -34,8 +34,10 @@ define('each', [
        * @return {Array} xs
        */
       'Object': function(xs, f) {
-        for (var key in xs) {
-          xs.hasOwnProperty(key) && f(xs[key], key, xs);
+        for(var key in xs) {
+          if(xs.hasOwnProperty(key)) {
+            f(xs[key], key, xs);
+          }
         }
         return xs;
       }
