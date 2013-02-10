@@ -23,18 +23,18 @@ preprocessors = {
 
 coverageReporter = {
   type : 'html',
-  dir : 'src-test/coverage/'
+  dir : 'src-test-coverage'
 };
 
 junitReporter = {
-  outputFile: 'src-test/output/test-results.xml'
+  outputFile: 'src-test-output/test-results.xml'
 };
 
 // browsers = ['PhantomJS'];
 
 // run on save
-autoWatch = !false;
-singleRun = !true;
+autoWatch = true;
+singleRun = false;
 
 // system
 port = 7357;
